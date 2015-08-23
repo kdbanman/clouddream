@@ -1,4 +1,5 @@
 # imports and basic notebook setup
+import sys
 from cStringIO import StringIO
 import numpy as np
 import scipy.ndimage as nd
@@ -111,11 +112,11 @@ img = np.float32(img)
 frame = img
 #frame_i = 0
 
-frame = deepdream(net, frame, end=json_data['layer'])
+frame = deepdream(net, frame, end=sys.argv[1])
 #frame = deepdream(net, img, end='inception_3b/5x5_reduce')
 #frame = deepdream(net, img, end='conv2/3x3')
 
-PIL.Image.fromarray(np.uint8(frame)).save("output.jpg")
+PIL.Image.fromarray(np.uint8(frame)).save(sys.argv[2])
 
 #h, w = frame.shape[:2]
 #s = 0.05 # scale coefficient
